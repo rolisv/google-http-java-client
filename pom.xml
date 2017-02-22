@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.google.http-client</groupId>
   <artifactId>google-http-client-parent</artifactId>
-  <version>1.23.0-ahc43-SNAPSHOT</version>
+  <version>1.23.0-ahc44-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Parent for the Google HTTP Client Library for Java</name>
 
@@ -612,8 +612,8 @@
     <project.guava.version>17.0</project.guava.version>
     <project.xpp3.version>1.1.4c</project.xpp3.version>
     <project.commons-logging.version>1.1.1</project.commons-logging.version>
-    <project.httpclient.version>4.3.6</project.httpclient.version>
-    <project.httpcore.version>4.3.3</project.httpcore.version>
+    <project.httpclient.version>4.4.1</project.httpclient.version>
+    <project.httpcore.version>4.4.1</project.httpcore.version>
     <project.jdo2-api.version>2.3-eb</project.jdo2-api.version>
   </properties>
 </project>
