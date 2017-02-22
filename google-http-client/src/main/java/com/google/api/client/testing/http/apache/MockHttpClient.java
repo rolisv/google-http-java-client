@@ -24,9 +24,11 @@ import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpVersion;
 import org.apache.http.client.AuthenticationHandler;
+import org.apache.http.client.AuthenticationStrategy;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.client.RedirectHandler;
+import org.apache.http.client.RedirectStrategy;
 import org.apache.http.client.RequestDirector;
 import org.apache.http.client.UserTokenHandler;
 import org.apache.http.conn.ClientConnectionManager;
@@ -69,6 +71,23 @@ public class MockHttpClient extends DefaultHttpClient {
       @Beta
       public HttpResponse execute(HttpHost target, HttpRequest request, HttpContext context)
           throws HttpException, IOException {
+        return new BasicHttpResponse(HttpVersion.HTTP_1_1, responseCode, null);
+      }
+    };
+  }
+
+  @Override
+  protected RequestDirector createClientRequestDirector(HttpRequestExecutor requestExec,
+          ClientConnectionManager conman, ConnectionReuseStrategy reustrat,
+          ConnectionKeepAliveStrategy kastrat, HttpRoutePlanner rouplan,
+          HttpProcessor httpProcessor,
+          HttpRequestRetryHandler retryHandler, RedirectStrategy redirectStrategy,
+          AuthenticationStrategy targetAuthStrategy, AuthenticationStrategy proxyAuthStrategy,
+          UserTokenHandler userTokenHandler, HttpParams params) {
+    return new RequestDirector() {
+      @Beta
+      public HttpResponse execute(HttpHost target, HttpRequest request, HttpContext context)
+              throws HttpException, IOException {
         return new BasicHttpResponse(HttpVersion.HTTP_1_1, responseCode, null);
       }
     };
